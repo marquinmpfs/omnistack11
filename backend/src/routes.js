@@ -1,24 +1,23 @@
 const express = require('express');
-const crypto = require('crypto');
+const OngController = require('./controllers/OngController');
+const IncidentController = require('./controllers/IncidentController');
+const ProfileController = require('./controllers/ProfileController');
+const SessionController = require('./controllers/SessionController');
 
 const routes = express.Router();
 
-routes.get('/ongs', (req, res) => {
-    const body = req.body;
+routes.get('/ongs', OngController.index);
 
-    console.log(body);
+routes.post('/ongs', OngController.create);
 
-    return res.json({"message": "Get funfou!!!!"})
-});
+routes.post('/sessions', SessionController.create);
 
-routes.post('/ong', (req, res) => {
-    const { name } = req.body;
+routes.get('/profile', ProfileController.index);
 
-    const id = crypto.randomBytes(4).toString('HEX');
+routes.get('/incidents', IncidentController.index);
 
-    console.log(name);
+routes.post('/incidents', IncidentController.create);
 
-    return res.json({"message": "Post funfou!!!!"})
-});
-
+routes.delete('/incidents/:id', IncidentController.delete);
+ 
 module.exports = routes;
