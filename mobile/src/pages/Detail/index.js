@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Image, TouchableOpacity, Text, Linking } from "react-native";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { Feather } from "@expo/vector-icons";
@@ -7,10 +7,13 @@ import * as MailComposer from "expo-mail-composer";
 import logoImg from "../../assets/logo.png";
 import styles from "./styles";
 
+import ModalHorus from "../../components/ModalHorus";
+
 export default function Detail() {
   const navigation = useNavigation();
   const route = useRoute();
   const incident = route.params.incident;
+  const [modalVisible, setModalVisible] = useState(false);
 
   const valorFormatado = Intl.NumberFormat("pt-BR", {
     style: "currency",
@@ -58,6 +61,8 @@ export default function Detail() {
 
         <Text style={styles.incidentProperty}> VALOR: </Text>
         <Text style={styles.incidentValue}>{valorFormatado}</Text>
+
+        <ModalHorus incident={incident} />
       </View>
       <View style={styles.contactBox}>
         <Text style={styles.heroTitle}>Salve o dia!</Text>

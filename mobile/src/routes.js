@@ -4,6 +4,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 import Incidents from "./pages/Incidents";
 import Detail from "./pages/Detail";
+import ModalHorus from "./components/ModalHorus";
 
 const AppStack = createStackNavigator();
 

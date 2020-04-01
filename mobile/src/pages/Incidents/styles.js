@@ -57,7 +57,7 @@ export default StyleSheet.create({
     alignItems: "center"
   },
   detailsButtonText: {
-    marginTop: 40
+    fontWeight: "bold"
   },
   descriptionEmpty: {
     flex: 1,
