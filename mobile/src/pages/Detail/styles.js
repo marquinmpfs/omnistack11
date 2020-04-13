@@ -17,7 +17,8 @@ export default StyleSheet.create({
     borderRadius: 8,
     backgroundColor: "#FFF",
     marginBottom: 16,
-    marginTop: 48
+    marginTop: 48,
+    minHeight: 200
   },
   incidentProperty: {
     fontSize: 14,

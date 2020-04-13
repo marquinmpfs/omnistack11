@@ -1,17 +1,29 @@
 import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
+  container: {
+    flex: 1
+  },
   centeredView: {
     flex: 1,
     justifyContent: "center",
-    alignItems: "center",
+    marginTop: 22
+  },
+  centeredViewModal: {
+    flex: 1,
+    justifyContent: "center",
+    marginTop: 22
+  },
+  modalViewClose: {
     marginTop: 22
   },
   modalView: {
-    margin: 20,
+    flex: 1,
+    marginTop: 40,
+    marginHorizontal: 15,
     backgroundColor: "white",
-    borderRadius: 20,
-    padding: 35,
+    borderRadius: 8,
+    padding: 20,
     alignItems: "center",
     shadowColor: "#000",
     shadowOffset: {
@@ -20,13 +32,24 @@ export default StyleSheet.create({
     },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
-    elevation: 5
+    elevation: 20
+  },
+  modalViewContent: {
+    marginTop: 20,
+    flexDirection: "column"
   },
   openButton: {
-    backgroundColor: "#F194FF",
-    borderRadius: 20,
-    padding: 10,
-    elevation: 2
+    backgroundColor: "#FFF",
+    height: 50,
+    width: "100%",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center"
+  },
+  actionText: {
+    color: "#E02041",
+    fontSize: 15,
+    fontWeight: "bold"
   },
   textStyle: {
     color: "white",
@@ -34,8 +57,17 @@ export default StyleSheet.create({
     textAlign: "center"
   },
   modalText: {
+    flexDirection: "row"
+  },
+  modalTextDescription: {
+    fontWeight: "bold",
     marginBottom: 15,
-    textAlign: "center"
+    fontSize: 18,
+    width: 150
+  },
+  modalTextValue: {
+    fontSize: 18,
+    marginLeft: 5
   },
   detailsButton: {
     flexDirection: "row",
@@ -44,5 +76,8 @@ export default StyleSheet.create({
   },
   detailsButtonText: {
     fontWeight: "bold"
+  },
+  closeButton: {
+    marginRight: 390
   }
 });

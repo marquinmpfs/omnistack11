@@ -1,13 +1,5 @@
-import React, { Component, useState } from "react";
-import {
-  Alert,
-  Modal,
-  StyleSheet,
-  Text,
-  TouchableHighlight,
-  TouchableOpacity,
-  View
-} from "react-native";
+import React, { useState } from "react";
+import { Modal, Text, TouchableOpacity, View } from "react-native";
 
 import { Feather } from "@expo/vector-icons";
 
@@ -15,7 +7,6 @@ import styles from "./styles";
 
 export default function ModalHorus({ incident }) {
   const [modalVisible, setModalVisible] = useState(false);
-  console.log(incident);
 
   return (
     <View style={styles.centeredView}>
@@ -24,47 +15,66 @@ export default function ModalHorus({ incident }) {
         transparent={true}
         visible={modalVisible}
         onRequestClose={() => {
-          Alert.alert("Modal has been closed.");
+          setModalVisible(!modalVisible);
         }}
       >
-        <View style={styles.centeredView}>
+        <View style={styles.centeredViewModal}>
           <View style={styles.modalView}>
-            <Text style={styles.modalText}>
-              Empresa: {incident.name} / {incident.uf}{" "}
-            </Text>
-            <Text style={styles.modalText}>Cidade: {incident.city}</Text>
-            <Text style={styles.modalText}>
-              Telefone para contato: {incident.whatsapp}
-            </Text>
-            <Text style={styles.modalText}>E-mail: {incident.email}</Text>
-            <Text style={styles.modalText}>
-              {" "}
-              Descrição do caso: {incident.description}
-            </Text>
-
-            <TouchableHighlight
-              style={{
-                ...styles.openButton,
-                backgroundColor: "#2196F3"
-              }}
-              onPress={() => {
-                setModalVisible(!modalVisible);
-              }}
+            <TouchableOpacity
+              style={styles.closeButton}
+              onPress={() => setModalVisible(!modalVisible)}
             >
-              <Text style={styles.textStyle}>Hide Modal</Text>
-            </TouchableHighlight>
+              <Feather name="x" size={24} color="#000" />
+            </TouchableOpacity>
+
+            <View style={styles.modalViewContent}>
+              <View style={styles.modalText}>
+                <Text style={styles.modalTextDescription}>Empresa:</Text>
+                <Text style={styles.modalTextValue}>
+                  {incident.name} / {incident.uf}
+                </Text>
+              </View>
+              <View style={styles.modalText}>
+                <Text style={styles.modalTextDescription}>Cidade: </Text>
+                <Text style={styles.modalTextValue}>{incident.city}</Text>
+              </View>
+              <View style={styles.modalText}>
+                <Text style={styles.modalTextDescription}>
+                  Telefone para contato:
+                </Text>
+                <Text style={styles.modalTextValue}>{incident.whatsapp}</Text>
+              </View>
+              <View style={styles.modalText}>
+                <Text style={styles.modalTextDescription}>E-mail:</Text>
+                <Text style={styles.modalTextValue}>{incident.email}</Text>
+              </View>
+              <View style={styles.modalText}>
+                <Text style={styles.modalTextDescription}>
+                  Descrição do caso:
+                </Text>
+                <Text style={styles.modalTextValue}>
+                  {incident.description}
+                </Text>
+              </View>
+            </View>
           </View>
         </View>
       </Modal>
 
-      <TouchableHighlight
+      <TouchableOpacity
         style={styles.openButton}
         onPress={() => {
           setModalVisible(true);
         }}
       >
-        <Feather name="arrow-right" size={16} color="#E02041" />
-      </TouchableHighlight>
+        <Text style={styles.actionText}>Ver detalhes</Text>
+        <Feather
+          name="arrow-right"
+          style={styles.openButtonFeather}
+          size={16}
+          color="#E02041"
+        />
+      </TouchableOpacity>
     </View>
   );
 }
